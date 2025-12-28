@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function PropertyCard({ property }) {
   return (
     <div className="property-card">
@@ -18,14 +20,9 @@ function PropertyCard({ property }) {
         <p>{property.bedrooms} bedrooms</p>
         <p>{property.tenure}</p>
 
-        <a
-          href={property.url}
-          className="view-link"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link to={`/property/${property.id}`} className="view-link">
           View Property
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import propertiesData from "./data/properties.json";
 import SearchForm from "./components/SearchForm";
 import PropertyCard from "./components/PropertyCard";
+import PropertyPage from "./pages/PropertyPage";
 import "./App.css";
 
 function App() {
@@ -33,19 +35,28 @@ function App() {
   });
 
   return (
-    <div className="app">
-      <h1>Estate Agent App</h1>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="app">
+            <h1>Estate Agent App</h1>
 
-      <SearchForm filters={filters} setFilters={setFilters} />
+            <SearchForm filters={filters} setFilters={setFilters} />
 
-      <h2>Search Results ({filteredProperties.length})</h2>
+            <h2>Search Results ({filteredProperties.length})</h2>
 
-      <div className="property-list">
-        {filteredProperties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
-        ))}
-      </div>
-    </div>
+            <div className="property-list">
+              {filteredProperties.map((property) => (
+                <PropertyCard key={property.id} property={property} />
+              ))}
+            </div>
+          </div>
+        }
+      />
+
+      <Route path="/property/:id" element={<PropertyPage />} />
+    </Routes>
   );
 }
 
