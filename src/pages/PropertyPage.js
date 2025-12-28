@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import propertiesData from "../data/properties.json";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -11,9 +11,13 @@ function PropertyPage() {
     (p) => p.id === id
   );
 
-  const [mainImage, setMainImage] = useState(
-    property?.images[0]
-  );
+  const [mainImage, setMainImage] = useState(null);
+
+  useEffect(() => {
+    if (property && property.images && property.images.length > 0) {
+      setMainImage(property.images[0]);
+    }
+  }, [property]);
 
   if (!property) {
     return <p>Property not found</p>;
@@ -31,14 +35,14 @@ function PropertyPage() {
         £{property.price.toLocaleString()}
       </p>
 
-      {/* MAIN IMAGE */}
-      <img
-        src={mainImage}
-        alt="Main property view"
-        className="property-image-large"
-      />
+      {mainImage && (
+        <img
+          src={mainImage}
+          alt="Main property view"
+          className="property-image-large"
+        />
+      )}
 
-      {/* THUMBNAILS */}
       <div className="thumbnail-row">
         {property.images.map((img, index) => (
           <img

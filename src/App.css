@@ -1,45 +1,90 @@
+/* ===== GLOBAL LAYOUT ===== */
+
+.app {
+  padding: 20px;
+}
+
+/* Desktop layout */
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.main-content {
+  width: 100%;
+}
+
+/* ===== PROPERTY LIST ===== */
+
+.property-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.property-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.property-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.property-card .price {
+  font-weight: bold;
+  color: #0053a0;
+}
+
+/* ===== FAVOURITES PANEL ===== */
+
+.favourites {
+  border: 2px dashed #0053a0;
+  padding: 15px;
+  min-height: 200px;
+  background: #f9fbff;
+}
+
+.fav-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* ===== PROPERTY PAGE ===== */
+
 .property-page {
   max-width: 900px;
   margin: auto;
   padding: 20px;
 }
 
-.property-image-large {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 15px;
-  text-decoration: none;
-  color: #0053a0;
-}
-
 .thumbnail-row {
   display: flex;
   gap: 10px;
-  margin: 15px 0;
   overflow-x: auto;
 }
 
-.thumbnail {
-  width: 80px;
-  height: 60px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
+/* ===== RESPONSIVE BREAKPOINT ===== */
+/* Smaller than iPad landscape */
 
-.thumbnail.active {
-  border: 2px solid #0053a0;
-}
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 
-.property-image-large {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin-bottom: 10px;
+  .favourites {
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .property-list {
+    grid-template-columns: 1fr;
+  }
 }
