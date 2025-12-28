@@ -4,6 +4,7 @@ import propertiesData from "./data/properties.json";
 import SearchForm from "./components/SearchForm";
 import PropertyCard from "./components/PropertyCard";
 import PropertyPage from "./pages/PropertyPage";
+import FavouritesList from "./components/FavouritesList";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,22 @@ function App() {
     dateFrom: null,
     dateTo: null
   });
+
+  const [favourites, setFavourites] = useState([]);
+
+  const addToFavourites = (property) => {
+    if (!favourites.some((fav) => fav.id === property.id)) {
+      setFavourites([...favourites, property]);
+    }
+  };
+
+  const removeFromFavourites = (id) => {
+    setFavourites(favourites.filter((p) => p.id !== id));
+  };
+
+  const clearFavourites = () => {
+    setFavourites([]);
+  };
 
   const filteredProperties = propertiesData.properties.filter((property) => {
     const propertyDate = new Date(property.dateAdded);
@@ -42,14 +59,28 @@ function App() {
           <div className="app">
             <h1>Estate Agent App</h1>
 
-            <SearchForm filters={filters} setFilters={setFilters} />
+            <div className="layout">
+              <div className="main-content">
+                <SearchForm filters={filters} setFilters={setFilters} />
 
-            <h2>Search Results ({filteredProperties.length})</h2>
+                <h2>Search Results ({filteredProperties.length})</h2>
 
-            <div className="property-list">
-              {filteredProperties.map((property) => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
+                <div className="property-list">
+                  {filteredProperties.map((property) => (
+                    <PropertyCard
+                      key={property.id}
+                      property={property}
+                      addToFavourites={addToFavourites}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <FavouritesList
+                favourites={favourites}
+                removeFromFavourites={removeFromFavourites}
+                clearFavourites={clearFavourites}
+              />
             </div>
           </div>
         }

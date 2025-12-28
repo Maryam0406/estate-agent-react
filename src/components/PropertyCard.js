@@ -1,36 +1,29 @@
 import { Link } from "react-router-dom";
 
-function PropertyCard({ property }) {
-  const previewImage =
-    property.images && property.images.length > 0
-      ? property.images[0]
-      : "";
+function PropertyCard({ property, addToFavourites }) {
+  const previewImage = property.images?.[0];
+
+  const handleDragStart = (e) => {
+    e.dataTransfer.setData("property", JSON.stringify(property));
+  };
 
   return (
-    <div className="property-card">
-      {previewImage && (
-        <img
-          src={previewImage}
-          alt={property.type}
-          className="property-image"
-        />
-      )}
+    <div
+      className="property-card"
+      draggable
+      onDragStart={handleDragStart}
+    >
+      <img src={previewImage} alt={property.type} />
 
-      <div className="property-info">
-        <h3>{property.type}</h3>
-        <p>{property.location}</p>
+      <h3>{property.type}</h3>
+      <p>{property.location}</p>
+      <p className="price">£{property.price.toLocaleString()}</p>
 
-        <p className="property-price">
-          £{property.price.toLocaleString()}
-        </p>
+      <button onClick={() => addToFavourites(property)}>
+        ❤️ Add to Favourites
+      </button>
 
-        <p>{property.bedrooms} bedrooms</p>
-        <p>{property.tenure}</p>
-
-        <Link to={`/property/${property.id}`} className="view-link">
-          View Property
-        </Link>
-      </div>
+      <Link to={`/property/${property.id}`}>View Property</Link>
     </div>
   );
 }
