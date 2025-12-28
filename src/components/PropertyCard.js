@@ -17,6 +17,7 @@ function PropertyCard({ property, addToFavourites }) {
 
       <h3>{property.type}</h3>
       <p>{property.location}</p>
+      <p>{property.bedrooms} bedrooms</p>
       <p className="price">£{property.price.toLocaleString()}</p>
 
       <button onClick={() => addToFavourites(property)}>

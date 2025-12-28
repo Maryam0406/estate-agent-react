@@ -25,68 +25,72 @@ function PropertyPage() {
 
   return (
     <div className="property-page">
-      <Link to="/" className="back-link">
-        ← Back to Search
-      </Link>
+      <div className="property-page-frame">
 
-      <h1>{property.type}</h1>
-      <p>{property.location}</p>
-      <p className="property-price">
-        £{property.price.toLocaleString()}
-      </p>
+        <Link to="/" className="back-link">
+          ← Back to Search
+        </Link>
 
-      {mainImage && (
-        <img
-          src={mainImage}
-          alt="Main property view"
-          className="property-image-large"
-        />
-      )}
+        <h1>{property.type}</h1>
+        <p>{property.location}</p>
+        <p className="property-price">
+          £{property.price.toLocaleString()}
+        </p>
 
-      <div className="thumbnail-row">
-        {property.images.map((img, index) => (
+        {mainImage && (
           <img
-            key={index}
-            src={img}
-            alt={`Thumbnail ${index + 1}`}
-            className={
-              img === mainImage
-                ? "thumbnail active"
-                : "thumbnail"
-            }
-            onClick={() => setMainImage(img)}
+            src={mainImage}
+            alt="Main property view"
+            className="property-image-large"
           />
-        ))}
+        )}
+
+        <div className="thumbnail-row">
+          {property.images.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              className={
+                img === mainImage
+                  ? "thumbnail active"
+                  : "thumbnail"
+              }
+              onClick={() => setMainImage(img)}
+            />
+          ))}
+        </div>
+
+        <Tabs>
+          <TabList>
+            <Tab>Description</Tab>
+            <Tab>Floor Plan</Tab>
+            <Tab>Map</Tab>
+          </TabList>
+
+          <TabPanel>
+            <p>{property.description}</p>
+          </TabPanel>
+
+          <TabPanel>
+            <img
+              src="images/floorplan.jpg"
+              alt="Floor Plan"
+              style={{ width: "100%" }}
+            />
+          </TabPanel>
+
+          <TabPanel>
+            <iframe
+              title="map"
+              width="100%"
+              height="300"
+              src={`https://maps.google.com/maps?q=${property.location}&output=embed`}
+            />
+          </TabPanel>
+        </Tabs>
+
       </div>
-
-      <Tabs>
-        <TabList>
-          <Tab>Description</Tab>
-          <Tab>Floor Plan</Tab>
-          <Tab>Map</Tab>
-        </TabList>
-
-        <TabPanel>
-          <p>{property.description}</p>
-        </TabPanel>
-
-        <TabPanel>
-          <img
-            src="images/floorplan.jpg"
-            alt="Floor Plan"
-            style={{ width: "100%" }}
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <iframe
-            title="map"
-            width="100%"
-            height="300"
-            src={`https://maps.google.com/maps?q=${property.location}&output=embed`}
-          />
-        </TabPanel>
-      </Tabs>
     </div>
   );
 }
