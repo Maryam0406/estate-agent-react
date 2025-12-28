@@ -1,20 +1,11 @@
-import { useEffect } from "react";
-
 function SearchForm({ filters, setFilters }) {
-
-  // React lifecycle hook (runs whenever filters change)
-  useEffect(() => {
-    console.log("Search filters updated:", filters);
-  }, [filters]);
-
   return (
     <div className="search-form">
       <h2>Search Properties</h2>
 
       {/* Property Type */}
-      <label htmlFor="type">Property Type</label>
+      <label>Property Type</label>
       <select
-        id="type"
         value={filters.type}
         onChange={(e) =>
           setFilters({ ...filters, type: e.target.value })
@@ -25,67 +16,82 @@ function SearchForm({ filters, setFilters }) {
         <option value="Flat">Flat</option>
       </select>
 
-      {/* Min Price */}
-      <label htmlFor="minPrice">Min Price (£)</label>
+      {/* Price */}
+      <label>Min Price (£)</label>
       <input
-        id="minPrice"
         type="number"
-        value={filters.minPrice || ""}
-        onChange={(e) =>
-          setFilters({ ...filters, minPrice: e.target.value })
-        }
-      />
-
-      {/* Max Price */}
-      <label htmlFor="maxPrice">Max Price (£)</label>
-      <input
-        id="maxPrice"
-        type="number"
-        value={filters.maxPrice || ""}
-        onChange={(e) =>
-          setFilters({ ...filters, maxPrice: e.target.value })
-        }
-      />
-
-      {/* Min Bedrooms */}
-      <label htmlFor="minBedrooms">Min Bedrooms</label>
-      <input
-        id="minBedrooms"
-        type="number"
-        value={filters.minBedrooms || ""}
-        onChange={(e) =>
-          setFilters({ ...filters, minBedrooms: e.target.value })
-        }
-      />
-
-      {/* Max Bedrooms */}
-      <label htmlFor="maxBedrooms">Max Bedrooms</label>
-      <input
-        id="maxBedrooms"
-        type="number"
-        value={filters.maxBedrooms || ""}
-        onChange={(e) =>
-          setFilters({ ...filters, maxBedrooms: e.target.value })
-        }
-      />
-
-      {/* Date Added */}
-      <label htmlFor="dateFrom">Date Added After</label>
-      <input
-        id="dateFrom"
-        type="date"
+        value={filters.minPrice ?? ""}
         onChange={(e) =>
           setFilters({
             ...filters,
-            dateFrom: new Date(e.target.value)
+            minPrice: e.target.value ? Number(e.target.value) : null
           })
         }
       />
 
-      {/* Postcode Area */}
-      <label htmlFor="postcode">Postcode Area</label>
+      <label>Max Price (£)</label>
+      <input
+        type="number"
+        value={filters.maxPrice ?? ""}
+        onChange={(e) =>
+          setFilters({
+            ...filters,
+            maxPrice: e.target.value ? Number(e.target.value) : null
+          })
+        }
+      />
+
+      {/* Bedrooms */}
+      <label>Min Bedrooms</label>
+      <input
+        type="number"
+        value={filters.minBedrooms ?? ""}
+        onChange={(e) =>
+          setFilters({
+            ...filters,
+            minBedrooms: e.target.value ? Number(e.target.value) : null
+          })
+        }
+      />
+
+      <label>Max Bedrooms</label>
+      <input
+        type="number"
+        value={filters.maxBedrooms ?? ""}
+        onChange={(e) =>
+          setFilters({
+            ...filters,
+            maxBedrooms: e.target.value ? Number(e.target.value) : null
+          })
+        }
+      />
+
+      {/* Date Added */}
+      <label>Date Added From</label>
+      <input
+        type="date"
+        onChange={(e) =>
+          setFilters({
+            ...filters,
+            dateFrom: e.target.value ? new Date(e.target.value) : null
+          })
+        }
+      />
+
+      <label>Date Added To</label>
+      <input
+        type="date"
+        onChange={(e) =>
+          setFilters({
+            ...filters,
+            dateTo: e.target.value ? new Date(e.target.value) : null
+          })
+        }
+      />
+
+      {/* Postcode */}
+      <label>Postcode Area</label>
       <select
-        id="postcode"
         value={filters.postcode}
         onChange={(e) =>
           setFilters({ ...filters, postcode: e.target.value })

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import propertiesData from "./data/properties.json";
-import SearchForm from "./components/SearchForm.js";
+import SearchForm from "./components/SearchForm";
+import PropertyCard from "./components/PropertyCard";
+import "./App.css";
 
 function App() {
-
   const [filters, setFilters] = useState({
     type: "Any",
     minPrice: null,
@@ -11,11 +12,11 @@ function App() {
     minBedrooms: null,
     maxBedrooms: null,
     postcode: "Any",
-    dateFrom: null
+    dateFrom: null,
+    dateTo: null
   });
 
   const filteredProperties = propertiesData.properties.filter((property) => {
-
     const propertyDate = new Date(property.dateAdded);
 
     return (
@@ -24,8 +25,10 @@ function App() {
       (!filters.maxPrice || property.price <= filters.maxPrice) &&
       (!filters.minBedrooms || property.bedrooms >= filters.minBedrooms) &&
       (!filters.maxBedrooms || property.bedrooms <= filters.maxBedrooms) &&
-      (filters.postcode === "Any" || property.postcodeArea === filters.postcode) &&
-      (!filters.dateFrom || propertyDate >= filters.dateFrom)
+      (filters.postcode === "Any" ||
+        property.postcodeArea === filters.postcode) &&
+      (!filters.dateFrom || propertyDate >= filters.dateFrom) &&
+      (!filters.dateTo || propertyDate <= filters.dateTo)
     );
   });
 
@@ -39,17 +42,7 @@ function App() {
 
       <div className="property-list">
         {filteredProperties.map((property) => (
-          <div key={property.id} className="property-card">
-            <img
-              src={property.picture}
-              alt={property.type}
-              width="220"
-            />
-            <h3>{property.type}</h3>
-            <p><strong>£{property.price.toLocaleString()}</strong></p>
-            <p>{property.bedrooms} bedrooms</p>
-            <p>{property.location}</p>
-          </div>
+          <PropertyCard key={property.id} property={property} />
         ))}
       </div>
     </div>
