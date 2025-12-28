@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
 
 function PropertyCard({ property }) {
+  const previewImage =
+    property.images && property.images.length > 0
+      ? property.images[0]
+      : "";
+
   return (
     <div className="property-card">
-      <img
-        src={property.picture}
-        alt={property.type}
-        className="property-image"
-      />
+      {previewImage && (
+        <img
+          src={previewImage}
+          alt={property.type}
+          className="property-image"
+        />
+      )}
 
       <div className="property-info">
         <h3>{property.type}</h3>
