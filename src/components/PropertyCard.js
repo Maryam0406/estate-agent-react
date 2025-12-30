@@ -13,18 +13,25 @@ function PropertyCard({ property, addToFavourites }) {
       draggable
       onDragStart={handleDragStart}
     >
-      <img src={previewImage} alt={property.type} />
+      <img
+        src={`/${previewImage}`}
+        alt={property.type}
+      />
 
       <h3>{property.type}</h3>
       <p>{property.location}</p>
       <p>{property.bedrooms} bedrooms</p>
-      <p className="price">£{property.price.toLocaleString()}</p>
+      <p className="price">
+        £{property.price.toLocaleString()}
+      </p>
 
       <button onClick={() => addToFavourites(property)}>
         ❤️ Add to Favourites
       </button>
 
-      <Link to={`/property/${property.id}`}>View Property</Link>
+      <Link to={`/property/${property.id}`}>
+        View Property
+      </Link>
     </div>
   );
 }
