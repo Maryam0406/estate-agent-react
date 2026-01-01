@@ -6,7 +6,7 @@
       "bedrooms": 4,
       "price": 750000,
       "tenure": "Freehold",
-      "description": "Attractive four bedroom family home situated within 0.5 miles of Petts Wood station with fast trains to London.",
+      "description": "Attractive four bedroom family home offered at £750,000, situated within 0.5 miles of Petts Wood station with fast trains to London.",
       "location": "Petts Wood Road, Petts Wood, Orpington",
       "postcodeArea": "BR5",
       "images": [
@@ -18,7 +18,7 @@
         "images/prop1/6.jpg"
       ],
       "url": "properties/prop1.html",
-      "dateAdded": "2022-10-12"
+      "dateAdded": "2025-12-29"
     },
     {
       "id": "prop2",
@@ -26,7 +26,7 @@
       "bedrooms": 2,
       "price": 399995,
       "tenure": "Freehold",
-      "description": "Two double bedroom garden flat presented in excellent decorative order throughout with open plan living space.",
+      "description": "Two double bedroom garden flat priced at 399,995, presented in excellent decorative order throughout with open plan living space.",
       "location": "Crofton Road, Orpington",
       "postcodeArea": "BR6",
       "images": [
@@ -38,7 +38,7 @@
         "images/prop2/6.jpg"
       ],
       "url": "properties/prop2.html",
-      "dateAdded": "2022-09-14"
+      "dateAdded": "2026-01-01"
     },
     {
       "id": "prop3",
@@ -46,7 +46,7 @@
       "bedrooms": 4,
       "price": 950000,
       "tenure": "Freehold",
-      "description": "Spacious four bedroom detached house with private garden, garage and modern fitted kitchen.",
+      "description": "Spacious four bedroom detached house available for 950,000 with private garden, garage and modern fitted kitchen.",
       "location": "High Street, Bromley",
       "postcodeArea": "BR1",
       "images": [
@@ -58,15 +58,15 @@
         "images/prop3/6.png"
       ],
       "url": "properties/prop3.html",
-      "dateAdded": "2023-01-05"
+      "dateAdded": "2026-01-05"
     },
     {
       "id": "prop4",
       "type": "Flat",
       "bedrooms": 1,
-      "price": 275000,
+      "price": 525000,
       "tenure": "Leasehold",
-      "description": "Modern one bedroom apartment ideal for first-time buyers, close to transport links.",
+      "description": "Modern one bedroom apartment priced at 275,000, ideal for first-time buyers, close to transport links.",
       "location": "Station Road, London",
       "postcodeArea": "NW1",
       "images": [
@@ -78,7 +78,7 @@
         "images/prop4/6.jpg"
       ],
       "url": "properties/prop4.html",
-      "dateAdded": "2023-03-22"
+      "dateAdded": "2025-12-27"
     },
     {
       "id": "prop5",
@@ -86,7 +86,7 @@
       "bedrooms": 5,
       "price": 1250000,
       "tenure": "Freehold",
-      "description": "Luxury five bedroom family home with landscaped garden, swimming pool and open-plan living areas.",
+      "description": "Luxury five bedroom family home offered at £1,250,000 with landscaped garden, swimming pool and open-plan living areas.",
       "location": "Oak Avenue, Chislehurst",
       "postcodeArea": "BR7",
       "images": [
@@ -98,15 +98,15 @@
         "images/prop5/6.jpg"
       ],
       "url": "properties/prop5.html",
-      "dateAdded": "2024-06-10"
+      "dateAdded": "2025-12-30"
     },
     {
       "id": "prop6",
       "type": "Flat",
       "bedrooms": 3,
-      "price": 525000,
+      "price": 1425000,
       "tenure": "Leasehold",
-      "description": "Three bedroom penthouse apartment offering panoramic views and contemporary interiors.",
+      "description": "Three bedroom penthouse apartment available for £1,425,000 offering panoramic views and contemporary interiors.",
       "location": "Riverside Walk, London",
       "postcodeArea": "SE1",
       "images": [
@@ -118,15 +118,15 @@
         "images/prop6/6.jpg"
       ],
       "url": "properties/prop6.html",
-      "dateAdded": "2021-11-02"
+      "dateAdded": "2025-12-25"
     },
     {
       "id": "prop7",
       "type": "House",
       "bedrooms": 2,
-      "price": 450000,
+      "price": 90000,
       "tenure": "Freehold",
-      "description": "Charming two bedroom cottage located in a quiet residential area with excellent local amenities.",
+      "description": "Charming two bedroom cottage priced at £90,000, located in a quiet residential area with excellent local amenities.",
       "location": "Maple Close, Sidcup",
       "postcodeArea": "DA15",
       "images": [
@@ -138,7 +138,7 @@
         "images/prop7/6.jpg"
       ],
       "url": "properties/prop7.html",
-      "dateAdded": "2022-08-18"
+      "dateAdded": "2025-12-28"
     }
   ]
 }
