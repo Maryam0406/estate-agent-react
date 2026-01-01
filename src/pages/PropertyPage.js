@@ -82,12 +82,20 @@ function PropertyPage() {
 
           <TabPanel>
             <iframe
-              title="map"
+              title="Property Location"
               width="100%"
               height="300"
-              src={`https://maps.google.com/maps?q=${property.location}&output=embed`}
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                property.location
+              )}&output=embed`}
+              allowFullScreen
             />
           </TabPanel>
+
+
         </Tabs>
 
       </div>

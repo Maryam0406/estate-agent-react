@@ -35,19 +35,39 @@ function App() {
     setFavourites([]);
   };
 
+  // ✅ FIXED FILTER LOGIC (handles 0 correctly)
   const filteredProperties = propertiesData.properties.filter((property) => {
     const propertyDate = new Date(property.dateAdded);
 
     return (
       (filters.type === "Any" || property.type === filters.type) &&
-      (!filters.minPrice || property.price >= filters.minPrice) &&
-      (!filters.maxPrice || property.price <= filters.maxPrice) &&
-      (!filters.minBedrooms || property.bedrooms >= filters.minBedrooms) &&
-      (!filters.maxBedrooms || property.bedrooms <= filters.maxBedrooms) &&
+
+      (filters.minPrice !== null
+        ? property.price >= filters.minPrice
+        : true) &&
+
+      (filters.maxPrice !== null
+        ? property.price <= filters.maxPrice
+        : true) &&
+
+      (filters.minBedrooms !== null
+        ? property.bedrooms >= filters.minBedrooms
+        : true) &&
+
+      (filters.maxBedrooms !== null
+        ? property.bedrooms <= filters.maxBedrooms
+        : true) &&
+
       (filters.postcode === "Any" ||
         property.postcodeArea === filters.postcode) &&
-      (!filters.dateFrom || propertyDate >= filters.dateFrom) &&
-      (!filters.dateTo || propertyDate <= filters.dateTo)
+
+      (filters.dateFrom
+        ? propertyDate >= filters.dateFrom
+        : true) &&
+
+      (filters.dateTo
+        ? propertyDate <= filters.dateTo
+        : true)
     );
   });
 
@@ -61,9 +81,14 @@ function App() {
 
             <div className="layout">
               <div className="main-content">
-                <SearchForm filters={filters} setFilters={setFilters} />
+                <SearchForm
+                  filters={filters}
+                  setFilters={setFilters}
+                />
 
-                <h2>Search Results ({filteredProperties.length})</h2>
+                <h2>
+                  Search Results ({filteredProperties.length})
+                </h2>
 
                 <div className="property-list">
                   {filteredProperties.map((property) => (
@@ -78,6 +103,7 @@ function App() {
 
               <FavouritesList
                 favourites={favourites}
+                addToFavourites={addToFavourites}
                 removeFromFavourites={removeFromFavourites}
                 clearFavourites={clearFavourites}
               />
@@ -86,7 +112,10 @@ function App() {
         }
       />
 
-      <Route path="/property/:id" element={<PropertyPage />} />
+      <Route
+        path="/property/:id"
+        element={<PropertyPage />}
+      />
     </Routes>
   );
 }

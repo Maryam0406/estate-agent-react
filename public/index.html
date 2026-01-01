@@ -13,12 +13,15 @@
       http-equiv="Content-Security-Policy"
       content="
         default-src 'self';
-        img-src 'self' data: https://maps.google.com https://maps.gstatic.com;
-        script-src 'self' https://maps.google.com https://maps.gstatic.com;
-        frame-src https://maps.google.com;
+        img-src 'self' data: https://www.google.com https://www.gstatic.com;
+        script-src 'self';
         style-src 'self' 'unsafe-inline';
-    "
+        frame-src https://www.google.com;
+        connect-src 'self' https://www.google.com;
+      "
     />
+
+
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--

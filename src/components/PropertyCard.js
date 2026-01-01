@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
 function PropertyCard({ property, addToFavourites }) {
-  const previewImage = property.images?.[0];
 
   const handleDragStart = (e) => {
-    e.dataTransfer.setData("property", JSON.stringify(property));
+    e.dataTransfer.setData(
+      "property",
+      JSON.stringify(property)
+    );
   };
 
   return (
@@ -14,7 +16,7 @@ function PropertyCard({ property, addToFavourites }) {
       onDragStart={handleDragStart}
     >
       <img
-        src={`/${previewImage}`}
+        src={`/${property.images[0]}`}
         alt={property.type}
       />
 
@@ -25,6 +27,7 @@ function PropertyCard({ property, addToFavourites }) {
         £{property.price.toLocaleString()}
       </p>
 
+      {/* Button-based add */}
       <button onClick={() => addToFavourites(property)}>
         ❤️ Add to Favourites
       </button>
