@@ -1,4 +1,4 @@
-import { render, screen} from "@testing-library/react";
+import { render, screen, fireEvent} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import App from "../App";
@@ -22,6 +22,20 @@ test("renders Estate Agent App heading", () => {
 test("renders property cards from JSON", () => {
   renderWithRouter();
   expect(screen.getAllByText(/£/i).length).toBeGreaterThan(0);
+});
+
+
+/* Test 3: Clear all favourites */
+test("clears favourites list", () => {
+  renderWithRouter();
+
+  const addButtons = screen.getAllByText(/Add to Favourites/i);
+  fireEvent.click(addButtons[0]);
+
+  const clearButton = screen.getByText(/Clear All/i);
+  fireEvent.click(clearButton);
+
+  expect(screen.queryByText(/Remove/i)).not.toBeInTheDocument();
 });
 
 
