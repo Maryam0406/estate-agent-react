@@ -38,5 +38,19 @@ test("clears favourites list", () => {
   expect(screen.queryByText(/Remove/i)).not.toBeInTheDocument();
 });
 
+/* Test 4: Prevent duplicate favourites */
+test("prevents duplicate favourites", () => {
+  renderWithRouter();
+
+  const addButtons = screen.getAllByText(/Add to Favourites/i);
+  fireEvent.click(addButtons[0]);
+  fireEvent.click(addButtons[0]);
+
+  const removeButtons = screen.getAllByText(/Remove/i);
+  expect(removeButtons.length).toBe(1);
+});
+
+
+
 
 
