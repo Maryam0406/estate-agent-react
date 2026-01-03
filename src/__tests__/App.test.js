@@ -2,6 +2,7 @@ import { render, screen, fireEvent} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import App from "../App";
+import propertiesData from "../data/properties.json";
 
 // Helper function to wrap App in a Router
 const renderWithRouter = () => {
@@ -49,6 +50,22 @@ test("prevents duplicate favourites", () => {
   const removeButtons = screen.getAllByText(/Remove/i);
   expect(removeButtons.length).toBe(1);
 });
+
+
+
+/* Test 5: Properties contain expensive listings for filtering */
+test("properties dataset supports price filtering logic", () => {
+  const expensiveProperties = propertiesData.properties.filter(
+    (p) => p.price >= 1000000
+  );
+
+  expect(expensiveProperties.length).toBeGreaterThan(0);
+
+  expensiveProperties.forEach((property) => {
+    expect(property.price).toBeGreaterThanOrEqual(1000000);
+  });
+});
+
 
 
 
