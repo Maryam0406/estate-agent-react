@@ -25,8 +25,17 @@ test("renders property cards from JSON", () => {
   expect(screen.getAllByText(/£/i).length).toBeGreaterThan(0);
 });
 
+/* Test 3: Add property to favourites */
+test("adds a property to favourites", () => {
+  renderWithRouter();
 
-/* Test 3: Clear all favourites */
+  const addButtons = screen.getAllByText(/Add to Favourites/i);
+  fireEvent.click(addButtons[0]);
+
+  expect(screen.getByText(/Remove/i)).toBeInTheDocument();
+});
+
+/* Test 4: Clear all favourites */
 test("clears favourites list", () => {
   renderWithRouter();
 
@@ -39,7 +48,7 @@ test("clears favourites list", () => {
   expect(screen.queryByText(/Remove/i)).not.toBeInTheDocument();
 });
 
-/* Test 4: Prevent duplicate favourites */
+/* Test 5: Prevent duplicate favourites */
 test("prevents duplicate favourites", () => {
   renderWithRouter();
 
@@ -52,7 +61,7 @@ test("prevents duplicate favourites", () => {
 });
 
 
-/* Test 5: Navigation to property page works */
+/* Test 6: Navigation to property page works */
 test("navigates to property details page", () => {
   renderWithRouter();
 
@@ -63,6 +72,7 @@ test("navigates to property details page", () => {
     screen.getByText(/Back to Search/i)
   ).toBeInTheDocument();
 });
+
 
 
 
