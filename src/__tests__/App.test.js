@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import App from "../App";
 import propertiesData from "../data/properties.json";
 
+
 // Helper function to wrap App in a Router
 const renderWithRouter = () => {
   return render(
@@ -35,7 +36,21 @@ test("adds a property to favourites", () => {
   expect(screen.getByText(/Remove/i)).toBeInTheDocument();
 });
 
-/* Test 4: Clear all favourites */
+/* Test 4: Remove property from favourites */
+test("removes a property from favourites when remove button clicked", () => {
+  renderWithRouter();
+
+  const addButtons = screen.getAllByText(/Add to Favourites/i);
+  fireEvent.click(addButtons[0]);
+
+  const removeButton = screen.getByText(/Remove/i);
+  fireEvent.click(removeButton);
+
+  expect(screen.queryByText(/Remove/i)).not.toBeInTheDocument();
+});
+
+
+/* Test 5: Clear all favourites */
 test("clears favourites list", () => {
   renderWithRouter();
 
@@ -48,7 +63,7 @@ test("clears favourites list", () => {
   expect(screen.queryByText(/Remove/i)).not.toBeInTheDocument();
 });
 
-/* Test 5: Prevent duplicate favourites */
+/* Test 6: Prevent duplicate favourites */
 test("prevents duplicate favourites", () => {
   renderWithRouter();
 
@@ -61,7 +76,7 @@ test("prevents duplicate favourites", () => {
 });
 
 
-/* Test 6: Navigation to property page works */
+/* Test 7: Navigation to property page works */
 test("navigates to property details page", () => {
   renderWithRouter();
 
