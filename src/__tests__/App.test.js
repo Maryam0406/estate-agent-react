@@ -52,6 +52,17 @@ test("prevents duplicate favourites", () => {
 });
 
 
+/* Test 5: Navigation to property page works */
+test("navigates to property details page", () => {
+  renderWithRouter();
+
+  const viewLinks = screen.getAllByText(/View Property/i);
+  fireEvent.click(viewLinks[0]);
+
+  expect(
+    screen.getByText(/Back to Search/i)
+  ).toBeInTheDocument();
+});
 
 
 
