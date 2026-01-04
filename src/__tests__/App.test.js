@@ -89,6 +89,14 @@ test("navigates to property details page", () => {
 });
 
 
+//Test 8: Property page displays thumbnails
+test("property page displays thumbnails", () => {
+  window.history.pushState({}, "", "/property/prop1");
+  renderWithRouter();
+
+  const thumbnails = screen.getAllByAltText(/Thumbnail/i);
+  expect(thumbnails.length).toBeGreaterThan(1);
+});
 
 
 
