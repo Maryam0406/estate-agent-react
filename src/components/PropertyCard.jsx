@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 function PropertyCard({ property, addToFavourites }) {
 
+  //Function to handle drag and drop
   const handleDragStart = (e) => {
     e.dataTransfer.setData(
       "property",
@@ -15,11 +16,13 @@ function PropertyCard({ property, addToFavourites }) {
       draggable
       onDragStart={handleDragStart}
     >
+      {/*Shows the first image of the property*/}
       <img
         src={`/${property.images[0]}`}
         alt={property.type}
       />
 
+      {/*Shows property details*/}
       <h3>{property.type}</h3>
       <p>{property.location}</p>
       <p>{property.bedrooms} bedrooms</p>
@@ -27,11 +30,12 @@ function PropertyCard({ property, addToFavourites }) {
         £{property.price.toLocaleString()}
       </p>
 
-      {/* Button-based add */}
+      {/* Button-based add*/}
       <button onClick={() => addToFavourites(property)}>
         ❤️ Add to Favourites
       </button>
 
+      {/* Link to property details page */}
       <Link to={`/property/${property.id}`}>
         View Property
       </Link>

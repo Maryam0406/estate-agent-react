@@ -13,12 +13,14 @@ function PropertyPage() {
 
   const [mainImage, setMainImage] = useState(null);
 
+  //Sets the first image as the main image when loaded
   useEffect(() => {
     if (property && property.images && property.images.length > 0) {
       setMainImage(property.images[0]);
     }
   }, [property]);
 
+  //Shows a message if property not found
   if (!property) {
     return <p>Property not found</p>;
   }
@@ -27,16 +29,18 @@ function PropertyPage() {
     <div className="property-page">
       <div className="property-page-frame">
 
+        {/* Back link to search page */}
         <Link to="/" className="back-link">
           ← Back to Search
         </Link>
 
+        {/* Property Details */}
         <h1>{property.type}</h1>
         <p>{property.location}</p>
         <p className="property-price">
           £{property.price.toLocaleString()}
         </p>
-
+        {/* Main property image */}
         {mainImage && (
           <img
             src={`/${mainImage}`}
@@ -44,7 +48,7 @@ function PropertyPage() {
             className="property-image-large"
           />
         )}
-
+        {/* Thumbnail images */}
         <div className="thumbnail-row">
           {property.images.map((img, index) => (
             <img
@@ -61,6 +65,7 @@ function PropertyPage() {
           ))}
         </div>
 
+        {/* Tabs for Description, Floor Plan, and Map */}
         <Tabs>
           <TabList>
             <Tab>Description</Tab>

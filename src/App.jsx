@@ -21,50 +21,62 @@ function App() {
 
   const [favourites, setFavourites] = useState([]);
 
+  //Add property to favourites
   const addToFavourites = (property) => {
     if (!favourites.some((fav) => fav.id === property.id)) {
       setFavourites([...favourites, property]);
     }
   };
 
+  //remove proeprty from favourites
   const removeFromFavourites = (id) => {
     setFavourites(favourites.filter((p) => p.id !== id));
   };
 
+  //resets favourite list to empty
   const clearFavourites = () => {
     setFavourites([]);
   };
 
-  // ✅ FIXED FILTER LOGIC (handles 0 correctly)
+  
+  
   const filteredProperties = propertiesData.properties.filter((property) => {
     const propertyDate = new Date(property.dateAdded);
 
     return (
+      //filter for property type
       (filters.type === "Any" || property.type === filters.type) &&
 
+      //filter for minimum price
       (filters.minPrice !== null
         ? property.price >= filters.minPrice
         : true) &&
 
+      //filter for maximum price  
       (filters.maxPrice !== null
         ? property.price <= filters.maxPrice
         : true) &&
 
+      //filter for minimum bedrooms  
       (filters.minBedrooms !== null
         ? property.bedrooms >= filters.minBedrooms
         : true) &&
 
+
+      //filter for maximum bedrooms  
       (filters.maxBedrooms !== null
         ? property.bedrooms <= filters.maxBedrooms
         : true) &&
 
+      //filter for postcode area
       (filters.postcode === "Any" ||
         property.postcodeArea === filters.postcode) &&
 
+      //filter for date added range
       (filters.dateFrom
         ? propertyDate >= filters.dateFrom
         : true) &&
-
+      //filter for date added range
       (filters.dateTo
         ? propertyDate <= filters.dateTo
         : true)
@@ -81,6 +93,7 @@ function App() {
 
             <div className="layout">
               <div className="main-content">
+                {/*Search and filter form*/}
                 <SearchForm
                   filters={filters}
                   setFilters={setFilters}
@@ -90,6 +103,7 @@ function App() {
                   Search Results ({filteredProperties.length})
                 </h2>
 
+                {/*Property Cards*/}
                 <div className="property-list">
                   {filteredProperties.map((property) => (
                     <PropertyCard
@@ -101,6 +115,7 @@ function App() {
                 </div>
               </div>
 
+              {/* Favourites sidebar */}    
               <FavouritesList
                 favourites={favourites}
                 addToFavourites={addToFavourites}
@@ -112,6 +127,7 @@ function App() {
         }
       />
 
+      {/*Displays a single property's details using its ID*/}
       <Route
         path="/property/:id"
         element={<PropertyPage />}

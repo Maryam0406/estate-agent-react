@@ -14,7 +14,7 @@ function FavouritesList({
     addToFavourites(property);
   };
 
-  // ALLOW drop
+  // drop
   const handleDragOver = (e) => {
     e.preventDefault();
   };
@@ -38,17 +38,19 @@ function FavouritesList({
   };
 
   return (
+    // Favourites container
     <div
       className="favourites"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <h2>❤️ Favourites</h2>
+      <h2> Favourites</h2>
 
       {favourites.length === 0 && (
         <p>Drag properties here</p>
       )}
 
+      {/* List of favourite properties */}
       {favourites.map((property) => (
         <div
           key={property.id}
@@ -65,20 +67,23 @@ function FavouritesList({
           }
         >
           <p>
+            {/* Property type and price */}
             {property.type} – £
             {property.price.toLocaleString()}
           </p>
 
+          {/*Button to remove from favourites*/}
           <button
             onClick={() =>
               removeFromFavourites(property.id)
             }
           >
-            ❌ Remove
+            Remove
           </button>
         </div>
       ))}
 
+      {/*Clear all favourites button*/}
       {favourites.length > 0 && (
         <button onClick={clearFavourites}>
           Clear All

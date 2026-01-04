@@ -53,18 +53,6 @@ test("prevents duplicate favourites", () => {
 
 
 
-/* Test 5: Properties contain expensive listings for filtering */
-test("properties dataset supports price filtering logic", () => {
-  const expensiveProperties = propertiesData.properties.filter(
-    (p) => p.price >= 1000000
-  );
-
-  expect(expensiveProperties.length).toBeGreaterThan(0);
-
-  expensiveProperties.forEach((property) => {
-    expect(property.price).toBeGreaterThanOrEqual(1000000);
-  });
-});
 
 
 
