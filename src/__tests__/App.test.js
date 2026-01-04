@@ -98,6 +98,19 @@ test("property page displays thumbnails", () => {
   expect(thumbnails.length).toBeGreaterThan(1);
 });
 
+/* Test 9: Clicking thumbnail updates main image */
+test("clicking thumbnail updates main image", () => {
+  window.history.pushState({}, "", "/property/prop1");
+  renderWithRouter();
+
+  const thumbnails = screen.getAllByRole("img");
+  fireEvent.click(thumbnails[1]);
+
+  expect(thumbnails[1]).toHaveClass("thumbnail active");
+});
+
+
+
 
 
 

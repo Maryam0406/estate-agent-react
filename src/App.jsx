@@ -7,6 +7,7 @@ import PropertyPage from "./pages/PropertyPage";
 import FavouritesList from "./components/FavouritesList";
 import "./App.css";
 
+//Stores all active search and filter options
 function App() {
   const [filters, setFilters] = useState({
     type: "Any",
@@ -19,6 +20,7 @@ function App() {
     dateTo: null
   });
 
+  //Stores list of favourite properties
   const [favourites, setFavourites] = useState([]);
 
   //Add property to favourites
@@ -28,12 +30,12 @@ function App() {
     }
   };
 
-  //remove proeprty from favourites
+  //Remove proeprty from favourites
   const removeFromFavourites = (id) => {
     setFavourites(favourites.filter((p) => p.id !== id));
   };
 
-  //resets favourite list to empty
+  //Resets favourite list to empty
   const clearFavourites = () => {
     setFavourites([]);
   };
@@ -93,7 +95,7 @@ function App() {
 
             <div className="layout">
               <div className="main-content">
-                {/*Search and filter form*/}
+                {/*Search and filter controls*/}
                 <SearchForm
                   filters={filters}
                   setFilters={setFilters}

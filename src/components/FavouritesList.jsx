@@ -4,7 +4,7 @@ function FavouritesList({
   removeFromFavourites,
   clearFavourites
 }) {
-  // ADD to favourites (drop from property card)
+  // Add to favourites (drag & drop from property card)
   const handleDrop = (e) => {
     e.preventDefault();
     const data = e.dataTransfer.getData("property");
@@ -14,12 +14,12 @@ function FavouritesList({
     addToFavourites(property);
   };
 
-  // drop
+  // Favourite panel accespts dragged items
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
-  // REMOVE when dragged OUT
+  // Remove a property from favourites when dragged out
   const handleDragEnd = (e, id) => {
     const favouritesBox = e.currentTarget.parentElement;
 
@@ -46,6 +46,7 @@ function FavouritesList({
     >
       <h2> Favourites</h2>
 
+      {/* Message shown when no favourite properties */ }
       {favourites.length === 0 && (
         <p>Drag properties here</p>
       )}
@@ -67,7 +68,7 @@ function FavouritesList({
           }
         >
           <p>
-            {/* Property type and price */}
+            {/* Property type and price is displayed */}
             {property.type} – £
             {property.price.toLocaleString()}
           </p>

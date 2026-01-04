@@ -30,7 +30,7 @@ function PropertyCard({ property, addToFavourites }) {
         £{property.price.toLocaleString()}
       </p>
 
-      {/* Button-based add*/}
+      {/* Button-based add to favourites*/}
       <button onClick={() => addToFavourites(property)}>
         ❤️ Add to Favourites
       </button>

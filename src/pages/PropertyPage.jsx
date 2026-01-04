@@ -5,8 +5,10 @@ import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 function PropertyPage() {
+  //Retrives property ID from URL
   const { id } = useParams();
 
+  //Finds the matching property from JSON data
   const property = propertiesData.properties.find(
     (p) => p.id === id
   );
@@ -40,7 +42,7 @@ function PropertyPage() {
         <p className="property-price">
           £{property.price.toLocaleString()}
         </p>
-        {/* Main property image */}
+        {/* Main property image is displayed */}
         {mainImage && (
           <img
             src={`/${mainImage}`}
