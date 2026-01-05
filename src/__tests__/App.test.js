@@ -117,15 +117,24 @@ test("price filter logic supports minimum price filtering", () => {
   expect(expensiveProperties.length).toBeGreaterThan(0);
 });
 
-/* Test 11: Search logic supports minimum bedrooms */
+/* Test 11: Verifies bedroom filter includes only properties with minimum bedrooms */
 test("bedroom filter logic supports minimum bedrooms", () => {
-  const largeProperties = propertiesData.properties.filter(
-    p => p.bedrooms >= 4
-  );
+  const testProperties = [
+    { bedrooms: 3 },
+    { bedrooms: 4 },
+    { bedrooms: 5 },
+  ];
 
-  expect(largeProperties.length).toBeGreaterThan(0);
+  const largeProperties = testProperties.filter(p => p.bedrooms >= 4);
+
+  expect(largeProperties).toEqual([
+    { bedrooms: 4 },
+    { bedrooms: 5 },
+  ]);
 });
 
+
+/* Test 12: Ensures date filter only includes properties added on or after a certain date */
 test("date filter logic includes only recent properties", () => {
   const testProperties = [
     { dateAdded: "2025-12-31" },
