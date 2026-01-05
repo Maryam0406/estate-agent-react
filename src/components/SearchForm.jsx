@@ -27,93 +27,107 @@ function SearchForm({ filters, setFilters }) {
       <h2>Search Properties</h2>
 
       {/* Property Type */}
-      <label>Property Type</label>
-      <Select
-        options={typeOptions}
-        value={typeOptions.find(o => o.value === filters.type)}
-        onChange={(option) =>
-          setFilters({ ...filters, type: option.value })
-        }
-      />
+      <div className="search-item">
+        <label>Property Type</label>
+        <Select
+          options={typeOptions}
+          value={typeOptions.find(o => o.value === filters.type)}
+          onChange={(option) =>
+            setFilters({ ...filters, type: option.value })
+          }
+        />
+      </div>
 
       {/* Price Range */}
-      <label>Price Range (£)</label>
-      <p>
-        £{filters.minPrice ?? 0} – £{filters.maxPrice ?? 1500000}
-      </p>
-      <Slider
-        range
-        min={0}
-        max={1500000}
-        step={25000}
-        value={[
-          filters.minPrice ?? 0,
-          filters.maxPrice ?? 1500000
-        ]}
-        onChange={([min, max]) =>
-          setFilters({
-            ...filters,
-            minPrice: min,
-            maxPrice: max
-          })
-        }
-      />
+      <div className="search-item">
+        <label>Price Range</label>
+        <div className="slider-row">
+          <span>
+            £{filters.minPrice ?? 0} – £{filters.maxPrice ?? 1500000}
+          </span>
+          <Slider
+            range
+            min={0}
+            max={1500000}
+            step={25000}
+            value={[
+              filters.minPrice ?? 0,
+              filters.maxPrice ?? 1500000
+            ]}
+            onChange={([min, max]) =>
+              setFilters({
+                ...filters,
+                minPrice: min,
+                maxPrice: max
+              })
+            }
+          />
+        </div>
+      </div>
 
       {/* Bedrooms */}
-      <label>Bedrooms</label>
-      <p>
-        {filters.minBedrooms ?? 0} – {filters.maxBedrooms ?? 6} bedrooms
-      </p>
-      <Slider
-        range
-        min={0}
-        max={6}
-        value={[
-          filters.minBedrooms ?? 0,
-          filters.maxBedrooms ?? 6
-        ]}
-        onChange={([min, max]) =>
-          setFilters({
-            ...filters,
-            minBedrooms: min,
-            maxBedrooms: max
-          })
-        }
-      />
+      <div className="search-item">
+        <label>Bedrooms</label>
+        <div className="slider-row">
+          <span>
+            {filters.minBedrooms ?? 0} – {filters.maxBedrooms ?? 6}
+          </span>
+          <Slider
+            range
+            min={0}
+            max={6}
+            value={[
+              filters.minBedrooms ?? 0,
+              filters.maxBedrooms ?? 6
+            ]}
+            onChange={([min, max]) =>
+              setFilters({
+                ...filters,
+                minBedrooms: min,
+                maxBedrooms: max
+              })
+            }
+          />
+        </div>
+      </div>
 
       {/* Date Added From */}
-      <label>Date Added From</label>
-      <DatePicker
-        selected={filters.dateFrom}
-        onChange={(date) =>
-          setFilters({ ...filters, dateFrom: date })
-        }
-        dateFormat="yyyy-MM-dd"
-        placeholderText="Select start date"
-      />
+      <div className="search-item">
+        <label>Date Added From</label>
+        <DatePicker
+          selected={filters.dateFrom}
+          onChange={(date) =>
+            setFilters({ ...filters, dateFrom: date })
+          }
+          dateFormat="yyyy-MM-dd"
+        />
+      </div>
 
       {/* Date Added To */}
-      <label>Date Added To</label>
-      <DatePicker
-        selected={filters.dateTo}
-        onChange={(date) =>
-          setFilters({ ...filters, dateTo: date })
-        }
-        dateFormat="yyyy-MM-dd"
-        placeholderText="Select end date"
-      />
+      <div className="search-item">
+        <label>Date Added To</label>
+        <DatePicker
+          selected={filters.dateTo}
+          onChange={(date) =>
+            setFilters({ ...filters, dateTo: date })
+          }
+          dateFormat="yyyy-MM-dd"
+        />
+      </div>
 
       {/* Postcode */}
-      <label>Postcode Area</label>
-      <Select
-        options={postcodeOptions}
-        value={postcodeOptions.find(
-          o => o.value === filters.postcode
-        )}
-        onChange={(option) =>
-          setFilters({ ...filters, postcode: option.value })
-        }
-      />
+      <div className="search-item">
+        <label>Postcode Area</label>
+        <Select
+          options={postcodeOptions}
+          value={postcodeOptions.find(
+            o => o.value === filters.postcode
+          )}
+          onChange={(option) =>
+            setFilters({ ...filters, postcode: option.value })
+          }
+        />
+      </div>
     </div>
   );
 }

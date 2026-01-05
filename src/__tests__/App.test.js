@@ -75,7 +75,6 @@ test("prevents duplicate favourites", () => {
   expect(removeButtons.length).toBe(1);
 });
 
-
 /* Test 7: Navigation to property page works */
 test("navigates to property details page", () => {
   renderWithRouter();
@@ -87,7 +86,6 @@ test("navigates to property details page", () => {
     screen.getByText(/Back to Search/i)
   ).toBeInTheDocument();
 });
-
 
 //Test 8: Property page displays thumbnails
 test("property page displays thumbnails", () => {

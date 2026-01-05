@@ -21,8 +21,7 @@ function PropertyPage() {
       setMainImage(property.images[0]);
     }
   }, [property]);
-
-  //Shows a message if property not found
+  //React automatically escapes JSX output which helps prevent XSS attacks by treating injected HTML as plain text
   if (!property) {
     return <p>Property not found</p>;
   }
