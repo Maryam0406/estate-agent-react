@@ -126,6 +126,17 @@ test("bedroom filter logic supports minimum bedrooms", () => {
   expect(largeProperties.length).toBeGreaterThan(0);
 });
 
+test("date filter logic includes only recent properties", () => {
+  const testProperties = [
+    { dateAdded: "2025-12-31" },
+    { dateAdded: "2025-12-29" },
+  ];
+
+  const recent = testProperties.filter(p => new Date(p.dateAdded) >= new Date("2025-12-30"));
+
+  expect(recent).toEqual([{ dateAdded: "2025-12-31" }]);
+});
+
 
 
 
