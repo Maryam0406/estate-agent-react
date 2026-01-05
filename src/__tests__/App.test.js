@@ -108,9 +108,11 @@ test("clicking thumbnail updates main image", () => {
 });
 
 
+/* Test 10: Price filter logic supports minimum price filtering */
+test("price filter logic supports minimum price filtering", () => {
+  const expensiveProperties = propertiesData.properties.filter(
+    p => p.price >= 1000000
+  );
 
-
-
-
-
-
+  expect(expensiveProperties.length).toBeGreaterThan(0);
+});
