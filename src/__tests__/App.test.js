@@ -108,7 +108,7 @@ test("clicking thumbnail updates main image", () => {
 });
 
 
-/* Test 10: Price filter logic supports minimum price filtering */
+/* Test 10: Search logic supports minimum price filtering */
 test("price filter logic supports minimum price filtering", () => {
   const expensiveProperties = propertiesData.properties.filter(
     p => p.price >= 1000000
@@ -116,3 +116,19 @@ test("price filter logic supports minimum price filtering", () => {
 
   expect(expensiveProperties.length).toBeGreaterThan(0);
 });
+
+/* Test 11: Search logic supports minimum bedrooms */
+test("bedroom filter logic supports minimum bedrooms", () => {
+  const largeProperties = propertiesData.properties.filter(
+    p => p.bedrooms >= 4
+  );
+
+  expect(largeProperties.length).toBeGreaterThan(0);
+});
+
+
+
+
+
+
+
