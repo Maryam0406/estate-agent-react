@@ -1,3 +1,26 @@
+# Advanced Client-Side Web Development
+## Estate Agent Client-Side Web Application
+
+### Student Details
+Name: MSM Shahla 
+Student ID: 20241862
+Uow ID: w2149547  
+
+### GitHub Repository
+https://github.com/Maryam0406/estate-agent-react
+
+### Live Application URL
+https://maryamreactcw.vercel.app/
+
+
+### How to Run the Project Locally
+1. Run `npm install`
+2. Run `npm start`
+3. Open http://localhost:3000 in a browser
+
+---
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

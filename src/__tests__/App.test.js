@@ -156,7 +156,7 @@ test("date filter logic includes only recent properties", () => {
   expect(recent).toEqual([{ dateAdded: "2025-12-31" }]);
 });
 
-/* Test 13: Verifies postcode filter includes only properties in BR area */
+/* Test 13: Verifies postcode filter includes properties only in the BR area */
 test("postcode filter logic supports BR postcode areas", () => {
   const testProperties = [
     { postcodeArea: "BR1" },
